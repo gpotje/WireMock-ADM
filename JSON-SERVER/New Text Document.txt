@@ -1,0 +1,11 @@
+npm install -g json-server
+json-server
+
+
+Repare que se trata de uma estrutura JSON simples. Vamos salvar esse arquivo como db.json.
+
+
+json-server db.json
+
+https://www.alura.com.br/artigos/mockando-apis-rest-com-json-server
+

@@ -1,0 +1,589 @@
+{
+	"info": {
+		"_postman_id": "9de29d62-9be0-46f8-89e1-c6b2a9f5823c",
+		"name": "WireMock-ADM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "29147039"
+	},
+	"item": [
+		{
+			"name": "Stub-Mappings",
+			"item": [
+				{
+					"name": "Get all stub mappings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_wiremock}}{{adm_path}}/mappings?limit=20&offset=0",
+							"host": [
+								"{{url_wiremock}}{{adm_path}}"
+							],
+							"path": [
+								"mappings"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new stub mapping",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"request\": {\n    \"method\": \"GET\",\n    \"urlPathPattern\": \"/ppt4g-rest-detran-cnh/api/v1/condutor/([a-zA-Z]*)/consulta-temporalidade/12345678901\"\n  },\n  \"response\": {\n    \"body\": \"{\\\"transacao\\\":\\\"6c903b40-a4dd-4a33-a6e3-273db553806d\\\",\\\"codigo\\\": 1500,\\\"mensagem\\\":\\\"cpfCondutor informado(a) é inválido(a).\\\"}\",\n    \"headers\": {\n      \"Content-Type\": \"application/json\"\n    },\n    \"status\": 406\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url_wiremock}}{{adm_path}}/mappings"
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new stub mapping Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"request\": {\n    \"method\": \"GET\",\n    \"url\": \"/eaigefor/rest/condutor/consulta/temporalidade/cpf/12345678901\"\n  },\n  \"response\": {\n    \"body\": \"{\\\"timestamp\\\":\\\"2023-12-19T16:45:16.753\\\",\\\"status\\\":406,\\\"error\\\":\\\"Bad Request\\\",\\\"message\\\":\\\"cpfCondutor informado(a) é inválido(a).\\\",\\\"codigoInterno\\\":\\\"1500\\\",\\\"path\\\":\\\"/eaigefor/rest/condutor/consulta/temporalidade/cpf/12345678901\\\"}\",\n    \"headers\": {\n      \"Content-Type\": \"application/json\"\n    },\n    \"status\": 406\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url_wiremock}}{{adm_path}}/mappings"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all stub mappings",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{url_wiremock}}{{adm_path}}/mappings"
+					},
+					"response": []
+				},
+				{
+					"name": "Reset stub mappings",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{url_wiremock}}{{adm_path}}/mappings/reset"
+					},
+					"response": []
+				},
+				{
+					"name": "Persist stub mappings",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{url_wiremock}}{{adm_path}}/mappings/save"
+					},
+					"response": []
+				},
+				{
+					"name": "Import stub mappings",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{url_wiremock}}{{adm_path}}/mappings/import"
+					},
+					"response": []
+				},
+				{
+					"name": "Get stub mapping by ID",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{url_wiremock}}{{adm_path}}/mappings/{{stubMappingId}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a stub mapping",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"request\": {\n    \"method\": \"POST\",\n    \"url\": \"/ppt4g-rest-sabesp/api/v1/agencia-virtual/presencial/health\"\n  },\n  \"response\": {\n    \"body\": \"{\\\"mensagem\\\":\\\"Service is Running.\\\"}\",\n    \"headers\": {\n      \"Content-Type\": \"application/json\"\n    },\n    \"status\": 200\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url_wiremock}}{{adm_path}}/mappings/{{stubMappingId}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a stub mapping",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{url_wiremock}}{{adm_path}}/mappings/5672096f-d44d-4f35-a2fc-8ed949c28215"
+					},
+					"response": []
+				},
+				{
+					"name": "Find stubs by matching on their metadata",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"matchesJsonPath\": {\n    \"expression\": \"$.outer\",\n    \"equalToJson\": \"{ \\\"inner\\\": 42 }\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url_wiremock}}{{adm_path}}/mappings/find-by-metadata"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete stub mappings matching metadata",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"matchesJsonPath\": {\n    \"expression\": \"$.outer\",\n    \"equalToJson\": \"{ \\\"inner\\\": 42 }\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url_wiremock}}{{adm_path}}/mappings/remove-by-metadata"
+					},
+					"response": []
+				}
+			],
+			"description": "### \n\n[Stub Mappings](http://192.168.12.25:9090/__admin/swagger-ui/#/Stub%20Mappings)  \nOperations on stub mappings"
+		},
+		{
+			"name": "Requests",
+			"item": [
+				{
+					"name": "Get all requests in journal",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_wiremock}}{{adm_path}}/requests?limit=20&since=2023-05-01",
+							"host": [
+								"{{url_wiremock}}{{adm_path}}"
+							],
+							"path": [
+								"requests"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "since",
+									"value": "2023-05-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all requests in journal",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{url_wiremock}}{{adm_path}}/requests"
+					},
+					"response": []
+				},
+				{
+					"name": "Get request by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url_wiremock}}{{adm_path}}/requests/{{requestId}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete request by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{url_wiremock}}{{adm_path}}/requests/{{requestId}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Count requests by criteria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"method\": \"POST\",\n  \"url\": \"/resource\",\n  \"headers\": {\n    \"Content-Type\": {\n      \"matches\": \".*/xml\"\n    }\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url_wiremock}}{{adm_path}}/requests/count"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove requests by criteria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"method\": \"POST\",\n  \"url\": \"/resource\",\n  \"headers\": {\n    \"Content-Type\": {\n      \"matches\": \".*/xml\"\n    }\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url_wiremock}}{{adm_path}}/requests/remove"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete requests mappings matching metadata",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"matchesJsonPath\": {\n    \"expression\": \"$.outer\",\n    \"equalToJson\": \"{ \\\"inner\\\": 42 }\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url_wiremock}}{{adm_path}}/requests/remove-by-metadata"
+					},
+					"response": []
+				},
+				{
+					"name": "Find requests by criteria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"method\": \"POST\",\n  \"url\": \"/resource\",\n  \"headers\": {\n    \"Content-Type\": {\n      \"matches\": \".*/xml\"\n    }\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url_wiremock}}{{adm_path}}/requests/find"
+					},
+					"response": []
+				},
+				{
+					"name": "Find unmatched requests",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"method\": \"POST\",\n  \"url\": \"/resource\",\n  \"headers\": {\n    \"Content-Type\": {\n      \"matches\": \".*/xml\"\n    }\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url_wiremock}}{{adm_path}}/requests/unmatched"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Near Misses",
+			"item": [
+				{
+					"name": "Retrieve near-misses for all unmatched requests",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url_wiremock}}{{adm_path}}/requests/unmatched/near-misses"
+					},
+					"response": []
+				},
+				{
+					"name": "Find near misses matching specific request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"url\": \"/actual\",\n  \"absoluteUrl\": \"http://localhost:8080/actual\",\n  \"method\": \"GET\",\n  \"clientIp\": \"0:0:0:0:0:0:0:1\",\n  \"headers\": {\n    \"User-Agent\": \"curl/7.30.0\",\n    \"Accept\": \"*/*\",\n    \"Host\": \"localhost:8080\"\n  },\n  \"cookies\": {},\n  \"browserProxyRequest\": false,\n  \"loggedDate\": 1467402464520,\n  \"bodyAsBase64\": \"\",\n  \"body\": \"\",\n  \"loggedDateString\": \"2016-07-01T19:47:44Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url_wiremock}}{{adm_path}}/near-misses/request"
+					},
+					"response": []
+				},
+				{
+					"name": "Find near misses matching request pattern",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"method\": \"POST\",\n  \"url\": \"/resource\",\n  \"headers\": {\n    \"Content-Type\": {\n      \"matches\": \".*/xml\"\n    }\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url_wiremock}}{{adm_path}}/near-misses/request-pattern"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Recordings",
+			"item": [
+				{
+					"name": "Start recording",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"targetBaseUrl\": \"http://example.mocklab.io\",\n  \"filters\": {\n    \"urlPathPattern\": \"/api/.*\",\n    \"method\": \"GET\"\n  },\n  \"captureHeaders\": {\n    \"Accept\": {},\n    \"Content-Type\": {\n      \"caseInsensitive\": true\n    }\n  },\n  \"requestBodyPattern\": {\n    \"matcher\": \"equalToJson\",\n    \"ignoreArrayOrder\": false,\n    \"ignoreExtraElements\": true\n  },\n  \"extractBodyCriteria\": {\n    \"textSizeThreshold\": \"2048\",\n    \"binarySizeThreshold\": \"10240\"\n  },\n  \"persist\": false,\n  \"repeatsAsScenarios\": false,\n  \"transformers\": [\n    \"modify-response-header\"\n  ],\n  \"transformerParameters\": {\n    \"headerValue\": \"123\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url_wiremock}}{{adm_path}}/recordings/start"
+					},
+					"response": []
+				},
+				{
+					"name": "Stop recording",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{url_wiremock}}{{adm_path}}/recordings/stop"
+					},
+					"response": []
+				},
+				{
+					"name": "Get recording status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url_wiremock}}{{adm_path}}/recordings/status"
+					},
+					"response": []
+				},
+				{
+					"name": "Take a snapshot recording",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"filters\": {\n    \"urlPathPattern\": \"/api/.*\",\n    \"method\": \"GET\",\n    \"ids\": [\n      \"40a93c4a-d378-4e07-8321-6158d5dbcb29\"\n    ]\n  },\n  \"captureHeaders\": {\n    \"Accept\": {},\n    \"Content-Type\": {\n      \"caseInsensitive\": true\n    }\n  },\n  \"requestBodyPattern\": {\n    \"matcher\": \"equalToJson\",\n    \"ignoreArrayOrder\": false,\n    \"ignoreExtraElements\": true\n  },\n  \"extractBodyCriteria\": {\n    \"textSizeThreshold\": \"2 kb\",\n    \"binarySizeThreshold\": \"1 Mb\"\n  },\n  \"outputFormat\": \"FULL\",\n  \"persist\": false,\n  \"repeatsAsScenarios\": false,\n  \"transformers\": [\n    \"modify-response-header\"\n  ],\n  \"transformerParameters\": {\n    \"headerValue\": \"123\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url_wiremock}}{{adm_path}}/recordings/snapshot"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Scenarios",
+			"item": [
+				{
+					"name": "Get All Scenarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url_wiremock}}{{adm_path}}/scenarios"
+					},
+					"response": []
+				},
+				{
+					"name": "Reset state of all scenarios",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{url_wiremock}}{{adm_path}}/scenarios/reset"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "System",
+			"item": [
+				{
+					"name": "Update Global Settings",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fixedDelay\": 500\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url_wiremock}}{{adm_path}}/settings"
+					},
+					"response": []
+				},
+				{
+					"name": "Reset State of All Scenarios",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{url_wiremock}}{{adm_path}}/reset"
+					},
+					"response": []
+				},
+				{
+					"name": "Shutdown WireMock Server",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{url_wiremock}}{{adm_path}}/shutdown"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Mocks - Barramento",
+			"item": [
+				{
+					"name": "/biometria/:canal/confronto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"evento\": {\r\n    \"id_atendimento\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n    \"id_cidadao\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n    \"cpf\": \"12345678901\",\r\n    \"identificacao\": \"123\",\r\n    \"ip\": \"0.0.0.0\",\r\n    \"canal\": {\r\n      \"id\": 0,\r\n      \"desc\": \"teste\",\r\n      \"estacao\": {\r\n        \"id\": 0,\r\n        \"desc\": \"teste\"\r\n      },\r\n      \"localidade\": {\r\n        \"id\": 0,\r\n        \"desc\": \"teste\"\r\n      }\r\n    }\r\n  },\r\n  \"idAtendimento\": \"123\",\r\n  \"cpf\": \"86165508014\",\r\n  \"rgSp\": \"12345678901\",\r\n  \"finalidade\": \"REUSO_CNH\",\r\n  \"incluirPendentes\": true,\r\n  \"imagem\": {\r\n    \"indice\": 1,\r\n    \"tipo\": \"DIGITAL\",\r\n    \"conteudo\": \"/6D/qAB9TklTVF9...YwPu9g=\"\r\n  },\r\n  \"template\": {\r\n    \"indice\": 2,\r\n    \"tipo\": \"VERIFINGER\",\r\n    \"conteudo\": \"/6D/qAB9TklTVF9...YwPu9g=\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wiremock.des.sp.gov.br/ppt4g-rest-utils/api/v1/biometria/:canal/confronto",
+							"protocol": "https",
+							"host": [
+								"wiremock",
+								"des",
+								"sp",
+								"gov",
+								"br"
+							],
+							"path": [
+								"ppt4g-rest-utils",
+								"api",
+								"v1",
+								"biometria",
+								":canal",
+								"confronto"
+							],
+							"variable": [
+								{
+									"key": "canal",
+									"value": "portal"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/consulta-temporalidade/87029189000",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://wiremock.des.sp.gov.br/ppt4g-rest-detran-cnh/api/v1/condutor/portal/consulta-temporalidade/87029189000"
+					},
+					"response": []
+				},
+				{
+					"name": "/consulta-temporalidade/86626967088",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://wiremock.des.sp.gov.br/ppt4g-rest-detran-cnh/api/v1/condutor/portal/consulta-temporalidade/86626967088"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
